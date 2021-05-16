@@ -19,10 +19,12 @@ def get_stream_title(twitch):
 
 
 def update_stream_title(twitch, title, followers):
-    new_title = "Followerthon™ – 1 Minute of Streaming "\
-                "for every Follower I have! Title updated with Python."
-    twitch.modify_channel_information(broadcaster_id=102763163,
-                                      title=new_title)
+    if "Followers: " in title:
+        title = title.split("|")[0]
+        new_title = title + f"| Followers: {followers}"
+        twitch.modify_channel_information(broadcaster_id=102763163,
+                                          title=new_title)
+        print("Stream title updated: \n\t", new_title)
 
 
 def main(followers_prev, twitch):
@@ -31,7 +33,6 @@ def main(followers_prev, twitch):
         followers_prev = followers
         title = get_stream_title(twitch)
         update_stream_title(twitch, title, followers)
-    print(get_stream_title(twitch))
     followers_string = f"Followers: {followers}"
     with open("followers.txt", "w") as followers_file:
         followers_file.write(str(followers_string))
