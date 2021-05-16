@@ -78,7 +78,7 @@ def add_remove_time():
             while not seconds:
                 try:
                     input_str = "How many seconds do you want to add?"
-                    seconds = int(input(f"\n\t{input_str} "))
+                    seconds = -int(input(f"\n\t{input_str} "))
                 except Exception:
                     print("Please enter a valid number of seconds.\n")
         elif choice == "2":
@@ -86,7 +86,7 @@ def add_remove_time():
             while not seconds:
                 try:
                     input_str = "How many seconds do you want to remove?"
-                    seconds = -int(input(f"\n\t{input_str} "))
+                    seconds = int(input(f"\n\t{input_str} "))
                 except Exception:
                     print("Please enter a valid number of seconds.\n")
         else:
