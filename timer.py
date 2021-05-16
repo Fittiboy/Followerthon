@@ -93,6 +93,14 @@ def add_remove_time():
             print("\nReturning to main menu...")
             sleep(2)
             break
+        with open("timer.json") as timer_settings_file:
+            start_time = json.load(timer_settings_file)
+        start_time += seconds
+        with open("timer.json", "w") as timer_settings_file:
+            json.dump(start_time, timer_settings_file)
+        print("\n\tTimer has been adjusted, returning to main menu...")
+        sleep(2)
+        break
 
 
 def menu():
