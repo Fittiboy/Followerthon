@@ -91,7 +91,7 @@ def add_remove_time():
                     print("Please enter a valid number of seconds.\n")
         else:
             print("\nReturning to main menu...")
-            sleep(2)
+            sleep(1)
             break
         with open("timer.json") as timer_settings_file:
             start_time = json.load(timer_settings_file)
@@ -99,7 +99,7 @@ def add_remove_time():
         with open("timer.json", "w") as timer_settings_file:
             json.dump(start_time, timer_settings_file)
         print("\n\tTimer has been adjusted, returning to main menu...")
-        sleep(2)
+        sleep(1)
         break
 
 
@@ -136,7 +136,7 @@ def menu():
             continue_timer()
         elif choice == "3":
             print("\nChanging timer...\n\n")
-            sleep(2)
+            sleep(1)
             add_remove_time()
         else:
             print("\nQuitting...")
