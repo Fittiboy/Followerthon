@@ -21,5 +21,8 @@ def main():
 
 
 while __name__ == "__main__":
-    main()
-    sleep(10)
+    try:
+        main()
+        sleep(10)
+    except Exception:
+        sleep(10)
