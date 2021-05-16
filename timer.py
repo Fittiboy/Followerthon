@@ -15,6 +15,7 @@ def min_sec(seconds):
     For example:
         12:17 = 12 minutes, 17 seconds"""
     minutes, seconds = divmod(seconds, 60)
+    # Pads the seconds with a 0 if < 10
     seconds = str(seconds).zfill(2)
     min_sec_string = f"{minutes}:{seconds}"
     return min_sec_string
@@ -70,7 +71,7 @@ def menu():
                   "\t1. Set timer to 0 and start\n"\
                   "\t2. Continue timer\n"\
                   "\t3. Add or remove time\n"\
-                  "\tq. Quit\n\n\t"
+                  "\tq. Quit\n\n\t\t"
     while True:
         choice = input(options_str)
         if choice not in options:
@@ -78,12 +79,16 @@ def menu():
                   "options: 1, 2, 3, q.\n")
             continue
         elif choice == "1":
+            print("\nStarting timer at 0...")
             set_and_start()
         elif choice == "2":
+            print("\nContinuing timer...")
             continue_timer()
         elif choice == "3":
+            print("\nChanging timer...\n\n")
             add_remove_time()
         else:
+            print("\nQuitting...")
             break
 
 
