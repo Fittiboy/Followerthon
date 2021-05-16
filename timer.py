@@ -63,6 +63,8 @@ def menu():
             continue_timer()
         elif choice == "3":
             add_remove_time()
+        else:
+            break
 
 
 def main():
