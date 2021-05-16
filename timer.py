@@ -1,5 +1,7 @@
 import time
 import json
+from time import sleep
+import os
 
 
 def now():
@@ -48,11 +50,16 @@ def continue_timer(start_time=None):
                 last_time = current_time
 
 
+def clear():
+    """Clears the terminal."""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def add_remove_time():
     """Adds or removes time from the timer.
 
     The unit of time is seconds."""
-    pass
+    clear()
 
 
 def menu():
@@ -72,6 +79,8 @@ def menu():
                   "\t2. Continue timer\n"\
                   "\t3. Add or remove time\n"\
                   "\tq. Quit\n\n\t\t"
+    clear()
+    print()
     while True:
         choice = input(options_str)
         if choice not in options:
@@ -87,6 +96,7 @@ def menu():
         elif choice == "3":
             print("\nChanging timer...\n\n")
             add_remove_time()
+            sleep(2)
         else:
             print("\nQuitting...")
             break
