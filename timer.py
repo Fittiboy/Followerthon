@@ -66,7 +66,7 @@ def add_remove_time():
     options_str = "What do you want to do?\n"\
                   "\t1. Add time\n"\
                   "\t2. Remove time\n"\
-                  "\tq. Go back\n"
+                  "\tq. Go back\n\n\t\t"
     while True:
         choice = input(options_str)
         if choice not in options:
