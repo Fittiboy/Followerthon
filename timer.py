@@ -61,6 +61,38 @@ def add_remove_time():
     The unit of time is seconds."""
     clear()
     print()
+    choice = None
+    options = ["1", "2", "q"]
+    options_str = "What do you want to do?\n"\
+                  "\t1. Add time\n"\
+                  "\t2. Remove time\n"\
+                  "\tq. Go back\n"
+    while True:
+        choice = input(options_str)
+        if choice not in options:
+            print("\n\tPlease choose one of the available",
+                  "options: 1, 2, q.\n")
+            continue
+        elif choice == "1":
+            seconds = None
+            while not seconds:
+                try:
+                    input_str = "How many seconds do you want to add?"
+                    seconds = int(input(f"\n\t{input_str} "))
+                except Exception:
+                    print("Please enter a valid number of seconds.\n")
+        elif choice == "2":
+            seconds = None
+            while not seconds:
+                try:
+                    input_str = "How many seconds do you want to remove?"
+                    seconds = -int(input(f"\n\t{input_str} "))
+                except Exception:
+                    print("Please enter a valid number of seconds.\n")
+        else:
+            print("\nReturning to main menu...")
+            sleep(2)
+            break
 
 
 def menu():
