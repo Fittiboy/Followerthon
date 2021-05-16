@@ -60,6 +60,7 @@ def add_remove_time():
 
     The unit of time is seconds."""
     clear()
+    print()
 
 
 def menu():
@@ -95,8 +96,8 @@ def menu():
             continue_timer()
         elif choice == "3":
             print("\nChanging timer...\n\n")
-            add_remove_time()
             sleep(2)
+            add_remove_time()
         else:
             print("\nQuitting...")
             break
