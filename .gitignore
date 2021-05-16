@@ -1,0 +1,7 @@
+secrets.json
+*~
+*.swp
+.python-version
+timer.json
+timer.txt
+followers.txt
