@@ -1,30 +1,50 @@
 import time
-# import json
+import json
 
 
 def now():
-    """Returns timestamp rounded to seconds."""
+    """Returns timestamp rounded down to seconds."""
     return int(time.time())
 
 
 def min_sec(seconds):
-    """Turns seconds into minutes and seconds."""
+    """Turns seconds into minutes and seconds.
+
+    The return is a string with the format:
+        minutes:seconds
+    For example:
+        12:17 = 12 minutes, 17 seconds"""
     minutes, seconds = divmod(seconds, 60)
-    return minutes, seconds
+    seconds = str(seconds).zfill(2)
+    min_sec_string = f"{minutes}:{seconds}"
+    return min_sec_string
 
 
 def set_and_start():
     """Sets the start time to now and starts the timer."""
-    pass
+    start_time = now()
+    with open("timer.json", "w") as timer_settings_file:
+        json.dump(start_time, timer_settings_file)
+    continue_timer(start_time)
 
 
-def continue_timer():
+def continue_timer(start_time=None):
     """Continues the timer from where it should be.
 
     This means that the timer continues as if it had
     never stopped, skipping the time that it was not
     running."""
-    pass
+    if not start_time:
+        with open("timer.json") as timer_settings_file:
+            start_time = json.load(timer_settings_file)
+    last_time = now()
+    while True:
+        current_time = now()
+        if current_time != last_time:
+            with open("timer.txt", "w") as timer_file:
+                timer_string = min_sec(current_time - start_time)
+                timer_file.write(timer_string)
+                last_time = current_time
 
 
 def add_remove_time():
