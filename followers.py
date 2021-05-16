@@ -15,8 +15,9 @@ def main():
                     secrets[1])
     twitch.authenticate_app([])
     followers = get_follow_count(twitch)
+    followers_string = f"Followers: {followers}"
     with open("followers.txt", "w") as followers_file:
-        followers_file.write(str(followers))
+        followers_file.write(str(followers_string))
 
 
 while __name__ == "__main__":
